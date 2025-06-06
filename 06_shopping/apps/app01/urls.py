@@ -1,14 +1,12 @@
 from fastapi import APIRouter
 
-user = APIRouter()
+shop = APIRouter()
+
+@shop.get("/shop/food")
+def shop_food():
+    return {"shop": "food"}
 
 
-@user.post("/user/login")
-def user_login():
-    return {"user": "login"}
-
-
-@user.post("/user/logout")
-def user_logout():
-    return {"user": "logout"}
-
+@shop.get("/shop/bed")
+def shop_bed():
+    return {"shop": "bed"}
