@@ -4,20 +4,20 @@ from typing import List
 
 app05 = APIRouter()
 
-
+# 1つのファイルをバイト列として受け取るエンドポイント
 @app05.post("/file")
 async def post_file(file: bytes = File()):
     print("file", file)
     return {"file": len(file), "message": "File uploaded successfully"}
 
-
+# 複数ファイルをバイト列のリストとして受け取るエンドポイント
 @app05.post("/files")
 async def post_files(files: List[bytes] = File()):
     for file in files:
         print((len(file)))
     return {"files": len(files), "message": "Files uploaded successfully"}
 
-
+# 1つのファイルをUploadFile型で受け取り、サーバーに保存するエンドポイント
 @app05.post("/uploadfile")
 async def get_update_file(file: UploadFile):
     # imgsディレクトリが存在しない場合は作成
@@ -29,7 +29,7 @@ async def get_update_file(file: UploadFile):
             f.write(line)
     return {"filename": file.filename, "message": "File uploaded successfully"}
 
-
+# 複数ファイルをUploadFile型のリストで受け取るエンドポイント
 @app05.post("/uploadfile")
 async def get_update_files(files: List[UploadFile]):
     # imgsディレクトリが存在しない場合は作成
