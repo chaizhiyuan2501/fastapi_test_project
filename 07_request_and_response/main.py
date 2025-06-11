@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-
+from fastapi.staticfiles import StaticFiles
 from apps.app01 import app01
 from apps.app02 import app02
 from apps.app03 import app03
@@ -9,6 +9,8 @@ from apps.app05 import app05
 from apps.app06 import app06
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="07_request_and_response/static"))
 
 app.include_router(app01, prefix="/user", tags=["01 パスパラメーター"])
 app.include_router(app02, prefix="/job", tags=["02 クエリパラメータ"])
