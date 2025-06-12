@@ -7,6 +7,7 @@ from apps.app03 import app03
 from apps.app04 import app04
 from apps.app05 import app05
 from apps.app06 import app06
+from apps.app07 import app07
 
 app = FastAPI()
 
@@ -18,6 +19,7 @@ app.include_router(app03, prefix="/user", tags=["03 リクエストボディパ�
 app.include_router(app04, prefix="/user", tags=["04 フォームのフォーマット"])
 app.include_router(app05, prefix="/file", tags=["05 ファイルのアップロード"])
 app.include_router(app06, prefix="/request", tags=["06 リクエスト対象"])
+app.include_router(app07, prefix="/request", tags=["07 响应参数"])
 
 if __name__ == "__main__":
     uvicorn.run("main:app", port=8000, reload=True)
