@@ -60,3 +60,28 @@ async def create_user(user: UserIn):
 async def create_item(item_id: str):
     # items辞書からitem_idに該当する商品情報を返す
     return items[item_id]
+
+# response_model_exclude関連の主なパラメータとその説明
+
+# response_model_include（白名单）
+# レスポンスモデルに含めたいフィールド名をリストやセットで指定します。
+
+# response_model_exclude（黑名单）
+# レスポンスモデルから除外したいフィールド名をリストやセットで指定します。
+# 例: response_model_exclude={"tax", "tags"}
+# 指定したフィールドはレスポンスから除外されます。
+
+# response_model_exclude_unset
+# デフォルト値のまま（未設定）のフィールドをレスポンスから除外するかどうかを指定します。
+# Trueにすると、リクエストで値が設定されていないフィールドはレスポンスに含まれません。
+# 例: response_model_exclude_unset=True
+
+# response_model_exclude_defaults
+# モデルで定義されたデフォルト値と同じ値のフィールドをレスポンスから除外するかどうかを指定します。
+# Trueにすると、デフォルト値と同じ値のフィールドはレスポンスに含まれません。
+# 例: response_model_exclude_defaults=True
+
+# response_model_exclude_none
+# Noneの値を持つフィールドをレスポンスから除外するかどうかを指定します。
+# Trueにすると、値がNoneのフィールドはレスポンスに含まれません。
+# 例: response_model_exclude_none=True
